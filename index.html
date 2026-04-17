@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Rakha Hidayathul Ramadhan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a08;
+  --bg2:#111110;
+  --bg3:#181816;
+  --line:rgba(255,255,255,0.06);
+  --line2:rgba(255,255,255,0.1);
+  --txt:#e8e4dc;
+  --txt2:#8a867e;
+  --txt3:#3d3b37;
+  --gold:#c9a84c;
+  --gold2:rgba(201,168,76,0.12);
+  --gold3:rgba(201,168,76,0.06);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Space Grotesk',sans-serif;
+  background:var(--bg);
+  color:var(--txt);
+  font-size:16px;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* NOISE TEXTURE */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;opacity:0.4;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.1rem 6vw;
+  border-bottom:1px solid var(--line);
+  background:rgba(10,10,8,0.9);
+  backdrop-filter:blur(16px);
+}
+.nav-logo{
+  font-family:'Libre Baskerville',serif;
+  font-size:0.95rem;
+  letter-spacing:0.04em;
+  color:var(--txt);
+  text-decoration:none;
+}
+.nav-right{display:flex;align-items:center;gap:2.5rem}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{
+  font-size:0.75rem;
+  color:var(--txt2);
+  text-decoration:none;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  font-weight:400;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--txt)}
+.nav-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 8px var(--gold);
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-rows:1fr auto;
+  padding:0 6vw;
+  padding-top:80px;
+  position:relative;
+  overflow:hidden;
+}
+.hero-bg-lines{
+  position:absolute;inset:0;
+  background-image:repeating-linear-gradient(90deg,var(--line) 0,var(--line) 1px,transparent 1px,transparent calc(100%/12));
+  pointer-events:none;
+}
+.hero-main{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:6rem 0 4rem;
+  position:relative;z-index:1;
+  max-width:900px;
+}
+.hero-index{
+  font-size:0.68rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--txt3);
+  margin-bottom:3rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.hero-index::before{content:'[00]';color:var(--gold);font-family:'Space Grotesk',sans-serif}
+h1{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(3.5rem,8vw,7.5rem);
+  line-height:0.95;
+  letter-spacing:-0.03em;
+  margin-bottom:3rem;
+  font-weight:700;
+}
+h1 .name-first{display:block;color:var(--txt)}
+h1 .name-mid{display:block;color:var(--txt);font-style:italic;font-weight:400}
+h1 .name-last{display:block;color:var(--txt2)}
+.hero-tagline{
+  display:flex;gap:3rem;
+  border-top:1px solid var(--line);
+  padding-top:2rem;
+  flex-wrap:wrap;
+}
+.tagline-item{}
+.tagline-label{
+  font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--txt3);margin-bottom:0.4rem;
+}
+.tagline-val{
+  font-size:0.9rem;color:var(--txt2);font-weight:300;
+}
+.hero-cta-wrap{
+  display:flex;align-items:center;gap:2rem;
+  padding:2.5rem 0;
+  border-top:1px solid var(--line);
+  position:relative;z-index:1;
+}
+.btn-main{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  border:1px solid var(--gold);
+  color:var(--gold);
+  padding:0.75rem 1.75rem;
+  font-size:0.78rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  text-decoration:none;
+  font-weight:500;
+  transition:all 0.25s;
+  background:var(--gold3);
+}
+.btn-main:hover{background:var(--gold);color:var(--bg)}
+.btn-sec{
+  font-size:0.75rem;
+  color:var(--txt2);
+  text-decoration:none;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  border-bottom:1px solid var(--txt3);
+  padding-bottom:2px;
+  transition:color 0.2s,border-color 0.2s;
+}
+.btn-sec:hover{color:var(--txt);border-color:var(--txt2)}
+.hero-scroll{
+  font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--txt3);margin-left:auto;
+  display:flex;align-items:center;gap:0.7rem;
+}
+.hero-scroll::after{
+  content:'';display:inline-block;
+  width:40px;height:1px;background:var(--txt3);
+}
+
+/* SECTION */
+section{padding:6rem 6vw;position:relative;z-index:1}
+.s-num{
+  font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--txt3);margin-bottom:4rem;
+  display:flex;align-items:center;gap:1.5rem;
+}
+.s-num::after{content:'';flex:1;max-width:60px;height:1px;background:var(--line2)}
+h2{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(2.2rem,4vw,3.5rem);
+  line-height:1.1;
+  letter-spacing:-0.02em;
+  font-weight:700;
+}
+h2 em{font-style:italic;color:var(--txt2);font-weight:400}
+
+/* ABOUT */
+.about-section{border-top:1px solid var(--line)}
+.about-layout{
+  display:grid;
+  grid-template-columns:320px 1fr;
+  gap:6rem;
+  margin-top:4rem;
+  align-items:start;
+}
+.about-left{}
+.data-table{border-collapse:collapse;width:100%}
+.data-table tr{border-bottom:1px solid var(--line)}
+.data-table td{
+  padding:0.9rem 0;
+  font-size:0.82rem;
+  vertical-align:top;
+}
+.data-table td:first-child{
+  color:var(--txt3);
+  font-size:0.65rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  padding-right:1.5rem;
+  white-space:nowrap;
+}
+.data-table td:last-child{color:var(--txt2)}
+.about-right{}
+.about-right p{
+  font-size:1.05rem;
+  color:var(--txt2);
+  font-weight:300;
+  line-height:1.85;
+  margin-bottom:1.5rem;
+}
+.about-quote{
+  margin-top:2rem;
+  padding:1.5rem 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.about-quote p{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.15rem;
+  font-style:italic;
+  color:var(--gold);
+  line-height:1.7;
+  margin:0!important;
+}
+
+/* SKILLS */
+.skills-section{border-top:1px solid var(--line)}
+.skills-layout{
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:6rem;
+  margin-top:4rem;
+}
+.skills-intro p{
+  font-size:0.9rem;color:var(--txt2);font-weight:300;
+  line-height:1.8;margin-top:1.5rem;
+}
+.skills-list{}
+.skill-row{
+  display:flex;align-items:center;gap:2rem;
+  padding:1.1rem 0;
+  border-bottom:1px solid var(--line);
+  transition:border-color 0.2s;
+}
+.skill-row:hover{border-bottom-color:var(--line2)}
+.skill-row:first-child{border-top:1px solid var(--line)}
+.skill-n{
+  font-size:0.6rem;color:var(--txt3);
+  letter-spacing:0.1em;min-width:24px;
+  font-family:'Space Grotesk',sans-serif;
+}
+.skill-name{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.3rem;color:var(--txt);
+  letter-spacing:-0.01em;flex:1;
+}
+.skill-cat{
+  font-size:0.65rem;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--txt3);
+  padding:0.25rem 0.7rem;
+  border:1px solid var(--line2);
+}
+
+/* PROJECTS */
+.projects-section{border-top:1px solid var(--line)}
+.project-block{
+  margin-top:4rem;
+  border:1px solid var(--line);
+  overflow:hidden;
+  transition:border-color 0.3s;
+}
+.project-block:hover{border-color:var(--line2)}
+.project-header{
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:start;
+  gap:2rem;
+  padding:2.5rem;
+  border-bottom:1px solid var(--line);
+}
+.proj-tag{
+  font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--gold);border:1px solid rgba(201,168,76,0.3);
+  padding:0.25rem 0.7rem;margin-bottom:1rem;
+  display:inline-block;
+}
+.proj-title{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(1.5rem,3vw,2.2rem);
+  line-height:1.15;letter-spacing:-0.02em;
+}
+.proj-year{
+  font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--txt3);text-align:right;padding-top:0.4rem;
+}
+.project-body{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+}
+.proj-desc{
+  padding:2.5rem;
+  border-right:1px solid var(--line);
+}
+.proj-desc p{
+  font-size:0.9rem;color:var(--txt2);font-weight:300;
+  line-height:1.8;margin-bottom:1.5rem;
+}
+.proj-stack{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem}
+.stack-item{
+  font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--txt3);border:1px solid var(--line);
+  padding:0.3rem 0.7rem;
+}
+.proj-features{padding:2.5rem}
+.feat-label{
+  font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--txt3);margin-bottom:1.25rem;
+}
+.feat-item{
+  display:flex;align-items:flex-start;gap:1rem;
+  padding:0.7rem 0;border-bottom:1px solid var(--line);
+  font-size:0.82rem;color:var(--txt2);font-weight:300;line-height:1.5;
+}
+.feat-item:last-child{border-bottom:none}
+.feat-item::before{
+  content:'';
+  display:inline-block;
+  width:5px;height:5px;min-width:5px;
+  border-radius:50%;background:var(--gold);
+  margin-top:6px;
+}
+.proj-footer{
+  padding:2rem 2.5rem;
+  border-top:1px solid var(--line);
+  display:flex;align-items:center;gap:2rem;
+}
+.proj-link{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;
+  border-bottom:1px solid rgba(201,168,76,0.3);
+  padding-bottom:2px;transition:all 0.2s;
+  font-weight:500;
+}
+.proj-link:hover{border-color:var(--gold)}
+
+/* CONTACT */
+.contact-section{border-top:1px solid var(--line)}
+.contact-layout{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:6rem;margin-top:4rem;align-items:start;
+}
+.contact-left h2{margin-bottom:1.5rem}
+.contact-left p{
+  font-size:0.95rem;color:var(--txt2);font-weight:300;
+  line-height:1.8;max-width:400px;
+}
+.contact-right{}
+.contact-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 0;
+  border-bottom:1px solid var(--line);
+}
+.contact-row:first-child{border-top:1px solid var(--line)}
+.c-label{
+  font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--txt3);
+}
+.c-link{
+  font-size:0.85rem;color:var(--txt2);
+  text-decoration:none;transition:color 0.2s;
+  font-weight:300;
+}
+.c-link:hover{color:var(--gold)}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--line);
+  padding:1.75rem 6vw;
+  display:flex;justify-content:space-between;
+  font-size:0.7rem;letter-spacing:0.08em;
+  color:var(--txt3);position:relative;z-index:1;
+}
+footer a{color:var(--txt3);text-decoration:none;transition:color 0.2s}
+footer a:hover{color:var(--gold)}
+
+/* ANIM */
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.hero-index,.hero-main h1,.hero-tagline,.hero-cta-wrap{animation:fadeIn 0.7s ease both}
+.hero-index{animation-delay:0.05s}
+.hero-main h1{animation-delay:0.15s}
+.hero-tagline{animation-delay:0.25s}
+.hero-cta-wrap{animation-delay:0.35s}
+
+@media(max-width:768px){
+  .about-layout,.skills-layout,.contact-layout{grid-template-columns:1fr;gap:3rem}
+  .project-body{grid-template-columns:1fr}
+  .proj-desc{border-right:none;border-bottom:1px solid var(--line)}
+  .project-header{grid-template-columns:1fr}
+  .proj-year{display:none}
+  nav .nav-links{display:none}
+  h1{font-size:3rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Rakha Ramadhan</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-dot"></div>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-bg-lines"></div>
+  <div class="hero-main">
+    <div class="hero-index">Full Stack Developer</div>
+    <h1>
+      <span class="name-first">Rakha</span>
+      <span class="name-mid">Hidayathul</span>
+      <span class="name-last">Ramadhan</span>
+    </h1>
+    <div class="hero-tagline">
+      <div class="tagline-item">
+        <div class="tagline-label">Fokus</div>
+        <div class="tagline-val">Web Development</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-cta-wrap">
+    <a href="#projects" class="btn-main">Lihat Proyek →</a>
+    <a href="#contact" class="btn-sec">Hubungi Saya</a>
+    <span class="hero-scroll">Scroll</span>
+  </div>
+</section>
+
+<section id="about" class="about-section">
+  <div class="s-num">[01] — About</div>
+  <h2>Developer yang<br>belajar dari <em>pengalaman nyata</em></h2>
+  <div class="about-layout">
+    <div class="about-left">
+    </div>
+    <div class="about-right">
+      <p>Sebagai pengembang yang berorientasi pada hasil, saya mendedikasikan diri untuk menciptakan ekosistem digital yang efisien. Dengan pengalaman menangani tantangan teknis di berbagai skala organisasi, saya percaya bahwa setiap baris kode harus berawal dari pemahaman mendalam terhadap akar masalah.</p>
+      <p>Spesialisasi saya mencakup pengembangan web secara menyeluruh (Fullstack), di mana saya menggabungkan estetika antarmuka yang ramah pengguna dengan struktur backend yang stabil. Bagi saya, teknologi adalah alat untuk mempermudah hidup, dan keberhasilannya diukur dari seberapa elegan solusi tersebut bekerja di dunia nyata.</p>
+      <p></p>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="skills-section">
+  <div class="s-num">[02] — Skills</div>
+  <div class="skills-layout">
+    <div class="skills-intro">
+      <h2>Teknologi<br>yang <em>dikuasai</em></h2>
+      <p>Stack yang saya gunakan untuk membangun aplikasi web modern — dari antarmuka hingga database.</p>
+    </div>
+    <div class="skills-list">
+      <div class="skill-row">
+        <span class="skill-n">01</span>
+        <span class="skill-name">React.js</span>
+        <span class="skill-cat">Frontend</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-n">02</span>
+        <span class="skill-name">JavaScript</span>
+        <span class="skill-cat">Language</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-n">03</span>
+        <span class="skill-name">Tailwind CSS</span>
+        <span class="skill-cat">Styling</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-n">04</span>
+        <span class="skill-name">Vite</span>
+        <span class="skill-cat">Build Tool</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-n">05</span>
+        <span class="skill-name">MySQL</span>
+        <span class="skill-cat">Database</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-n">06</span>
+        <span class="skill-name">HTML & CSS</span>
+        <span class="skill-cat">Markup</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-n">07</span>
+        <span class="skill-name">Git</span>
+        <span class="skill-cat">Version Control</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-n">08</span>
+        <span class="skill-name">Stitch</span>
+        <span class="skill-cat">Design Tool</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="projects-section">
+  <div class="s-num">[03] — Projects</div>
+  <h2>Proyek yang<br>sudah <em>dibangun</em></h2>
+
+  <div class="project-block">
+    <div class="project-header">
+      <div>
+        <span class="proj-tag">Magang · Dinas Kominfo</span>
+        <h3 class="proj-title">Sistem Inventory<br>Sparepart Motor</h3>
+      </div>
+      <div class="proj-year">2024–2025</div>
+    </div>
+    <div class="project-body">
+      <div class="proj-desc">
+        <p>Sistem manajemen inventori digital untuk Bengkel Jaya Motor — mengotomasi seluruh alur pengelolaan stok sparepart yang sebelumnya dilakukan secara manual dan rentan kesalahan.</p>
+        <p>Dibangun selama program magang, aplikasi ini menjadi solusi nyata bagi pelaku usaha kecil untuk meningkatkan akurasi data dan efisiensi operasional.</p>
+        <div class="proj-stack">
+          <span class="stack-item">React.js</span>
+          <span class="stack-item">Vite</span>
+          <span class="stack-item">Tailwind CSS</span>
+          <span class="stack-item">MySQL</span>
+          <span class="stack-item">JavaScript</span>
+        </div>
+      </div>
+      <div class="proj-features">
+        <div class="feat-label">Fitur Utama</div>
+        <div class="feat-item">Monitoring stok real-time dengan Low Stock Alert (&lt;5 unit)</div>
+        <div class="feat-item">Pencatatan barang masuk dari pemasok secara terstruktur</div>
+        <div class="feat-item">Transaksi penjualan dengan pengurangan stok otomatis</div>
+        <div class="feat-item">Koreksi stok dengan audit trail lengkap</div>
+        <div class="feat-item">Manajemen katalog sparepart (CRUD)</div>
+        <div class="feat-item">Laporan stok, barang masuk & keluar</div>
+      </div>
+    </div>
+    <div class="proj-footer">
+      <a href="https://rakharamadhan2918.github.io/inventory-sparepart" class="proj-link">Lihat Landing Page →</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="s-num">[04] — Contact</div>
+  <div class="contact-layout">
+    <div class="contact-left">
+      <h2>Mari <em>terhubung</em></h2>
+      <p style="margin-top:1.5rem">Terbuka untuk diskusi proyek, kolaborasi, atau sekadar ngobrol seputar teknologi dan pengembangan software.</p>
+    </div>
+    <div class="contact-right">
+      <div class="contact-row">
+        <span class="c-label">Email</span>
+        <a href="mailto:rakharamadhan2918@gmail.com" class="c-link">rakharamadhan2918@gmail.com</a>
+      </div>
+      <div class="contact-row">
+        <span class="c-label">LinkedIn</span>
+        <a href="https://www.linkedin.com/in/rakha-ramadhan-4a78893b7/" target="_blank" class="c-link">rakha-ramadhan</a>
+      </div>
+      <div class="contact-row">
+        <span class="c-label">Instagram</span>
+        <a href="https://www.instagram.com/rakhaa.hr" target="_blank" class="c-link">@rakhaa.hr</a>
+      </div>
+      <div class="contact-row">
+        <span class="c-label">GitHub</span>
+        <a href="https://github.com/rakharamadhan2918" target="_blank" class="c-link">rakharamadhan2918</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Rakha Hidayathul Ramadhan</span>
+  <a href="https://rakharamadhan2918.github.io">rakharamadhan2918.github.io</a>
+</footer>
+
+</body>
+</html>
